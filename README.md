@@ -1,73 +1,97 @@
-# 🚀 FastAPI Docker Boilerplate
+# 🧠 Local LLM Inference API (FastAPI + llama.cpp)
 
-A minimal, reusable FastAPI + Docker starter template for quickly spinning up API projects.
+A production-grade, containerized FastAPI backend for running quantized GGUF language models via `llama.cpp`.  
+Supports local inference with models like Mistral, LLaMA 3, MythoMax, and Chronos Hermes.
 
-Designed to be cloned or used with tools like `degit` to kickstart development with a production-ready base.
+This project forms the backend layer of a broader system for creative tools, research assistants, and experimental RAG-based storytelling agents — all powered locally.
 
 ---
 
-## ⚡ Boilerplate Usage
+## 🚀 Features
 
-You can use this repo as a boilerplate using [`degit`](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit your-username/fastapi-docker-boilerplate my-new-api
-cd my-new-api
-make up
-```
-
-Or clone manually:
-
-```bash
-git clone https://github.com/your-username/fastapi-docker-boilerplate.git my-new-api
-cd my-new-api
-rm -rf .git
-git init
-```
+- 🔒 **Private, local inference** – no API keys, no 3rd-party requests
+- 🐳 **Dockerized** with Makefile automation
+- ⚡ **FastAPI** backend with route modularization
+- 🧪 **Test suite** using `pytest` and `unittest.mock`
+- ⚙️ **Config system** using `.env` + `config.yml`
+- 📦 **Supports quantized .gguf models** via `llama-cpp-python`
 
 ---
 
 ## 🐳 Usage
 
-### Build and Run
+### 🔧 Setup
 
 ```bash
-make up
+cp .env.example .env
+make up        # Build and run the container
 ```
 
-This will build the Docker image and run the container.
+### ✅ Test
 
-### Stop and Remove
+```bash
+make test-local    # Runs tests locally
+make test          # Runs tests in Docker
+```
+
+### 🛑 Stop
 
 ```bash
 make down
 ```
 
-Stops and removes the running container.
+---
 
-### Rebuild Container
+## 📋 Config
 
-```bash
-make rebuild
-```
+Config values come from both:
 
-Stops the container, rebuilds the image, and runs it again.
+- `config.yml` – Model path, API host/port, etc.
+- `.env` – Used for environment-level overrides
 
 ---
 
-## 📂 Environment Setup
+## 🧪 Test Coverage
 
-1. Copy `.env.example` to `.env`
-2. Update variables as needed.
+- ✅ `run_prompt()` logic via mock injection
+- ✅ FastAPI route: `/infer`
+- 🔜 More integration tests planned
+- 🔜 Add streaming support
+
+---
+## 🔭 Roadmap
+
+A living development plan — checkmarks mark what's done, and everything else is on deck.
+
+- [x] Clone Dockerized FastAPI boilerplate
+- [x] Choose initial inference model & download `.gguf`
+- [x] Load the model via `llama-cpp`
+- [x] Connect model to FastAPI inference route
+- [x] Validate functionality with test prompts
+
+### Up Next
+
+- [ ] 🖼 Build Tauri-based desktop UI
+- [ ] 📚 Add RAG pipeline (chunking, embeddings, vector DB)
+- [ ] 🌐 Research self-hosting / remote deployment options
+- [ ] 🚀 Deploy project to selected hosting platform
+- [ ] 🔁 Implement hot-reload dev server (Uvicorn + volume mounts)
+- [ ] 🛠 Refactor Dockerfile for multi-stage (dev/prod)
+- [ ] 🧪 Split test/dev containers with `docker-compose.override.yml`
+
+---
+
+## 🧠 Target Models for Local Inference
+
+| Model | Strength | Notes | Download |
+|-------|----------|-------|----------|
+| ✅ **Mistral-7B-Instruct** | Fast, lightweight | Perfect for bootstrapping | [mistral-7b-instruct.Q4_K_M.gguf](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF) |
+| ⏳ **LLaMA 3 8B** | Balanced & powerful | Step up once base is stable | [llama-3-8B-Instruct.Q4_K_M.gguf](https://huggingface.co/TheBloke/Llama-3-8B-Instruct-GGUF) |
+| 🌀 **MythoMax 13B** | Imaginative & surreal | Great for narrative/story gen | [MythoMax-L2-13B.Q4_K_M.gguf](https://huggingface.co/TheBloke/MythoMax-L2-13B-GGUF) |
+| ⏱ **Chronos Hermes 13B** | Time-sensitive & verbose | Ideal for longform + RAG fusion | [Chronos-Hermes-13B.Q4_K_M.gguf](https://huggingface.co/TheBloke/Chronos-Hermes-13B-GGUF) |
 
 ---
 
 ## 📄 License
 
-MIT – free for personal or commercial use. No guarantees, use at your own risk.
-
----
-
-## 🤝 Contribute
-
-PRs and issues welcome. Fork it, improve it, and make something cool.
+MIT – free for personal or commercial use.
