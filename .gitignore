@@ -19,4 +19,7 @@ env/
 # Docker
 *.log
 
-notes.txt
+todo.md
+
+*.gguf
+
