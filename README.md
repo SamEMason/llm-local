@@ -79,6 +79,17 @@ A living development plan — checkmarks mark what's done, and everything else i
 - [ ] 🛠 Refactor Dockerfile for multi-stage (dev/prod)
 - [ ] 🧪 Split test/dev containers with `docker-compose.override.yml`
 
+### 🛣️ Down the Road
+
+- [ ] 🔐 Add Auth Layer
+    - Options: API key, OAuth2, JWT, or local password-protected endpoints
+    - Might pair well with user/session context for future multi-user RAG
+- [ ] 🔄 Model Switching Mechanism
+    - Dynamically load different .gguf models via config or runtime param
+- [ ] 🌊 Streaming Responses
+    - Add `stream=True` support for real-time token generation in `/infer/`
+- [ ] ✅ Test Coverage Expansion
+    - Auth endpoints, error handling, config fallbacks
 ---
 
 ## 🧠 Target Models for Local Inference
