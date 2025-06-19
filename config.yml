@@ -1,5 +1,5 @@
 model:
-  path: models/mistral-7b-instruct-v0.1.QB_0.gguf
+  path: ./models/mistral-7b-instruct-v0.1.Q8_0.gguf
   context_size: 4096
   threads: 8
 
