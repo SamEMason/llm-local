@@ -20,5 +20,5 @@ def load_config(path: str = "config.yml") -> Dict[str, Any]:
     # Only add known keys - or dump everything if needed
     if "ENV" in os.environ:
         combined_config["env"] = os.getenv("ENV")
-    
+
     return combined_config
