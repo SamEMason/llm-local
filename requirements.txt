@@ -5,6 +5,7 @@ pydantic
 pre-commit
 black
 ruff
+llama-cpp-python
 
 # Testing
 pytest
