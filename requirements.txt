@@ -1,0 +1,11 @@
+fastapi[standard]
+uvicorn[standard]
+python-dotenv
+pydantic
+pre-commit
+black
+ruff
+
+# Testing
+pytest
+httpx

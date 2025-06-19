@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 24.3.0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.4
+    hooks:
+      - id: ruff
+
+  - repo: local
+    hooks:
+      - id: local-pytest
+        name: Run Pytest
+        entry: sh
+        language: system
+        types: [python]
+        args: 
+          - -c
+          - "PYTHONPATH=. pytest tests/"
